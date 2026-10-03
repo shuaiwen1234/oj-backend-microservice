@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: oj-backend-service-client
+  cloud:
+    nacos:
+      server-addr: ${nacos.address}

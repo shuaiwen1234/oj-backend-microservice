@@ -1,0 +1,40 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+/oj-backend-judge-service/src/main/resources/application-dev.yml
+/oj-backend-common/src/main/resources/application.yml
+/oj-backend-gateway/src/main/resources/application-dev.yml
+/oj-backend-question-service/src/main/resources/application-dev.yml
+/oj-backend-service-client/src/main/resources/application-dev.yml
+/oj-backend-user-service/src/main/resources/application-dev.yml
+/note.txt

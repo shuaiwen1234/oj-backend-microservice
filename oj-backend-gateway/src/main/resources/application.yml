@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: oj-backend-gateway
+  cloud:
+    nacos:
+      server-addr: ${nacos.address}
+    gateway:
+      routes:
+        - id: oj-backend-user-service
+          uri: lb://oj-backend-user-service
+          predicates:
+            - Path=/api/user/**
+        - id: oj-backend-question-service
+          uri: lb://oj-backend-question-service
+          predicates:
+            - Path=/api/question/**
+        - id: oj-backend-judge-service
+          uri: lb://oj-backend-judge-service
+          predicates:
+            - Path=/api/judge/**
+    sentinel:
+      transport:
+        dashboard: ${sentinel.addr}   # Sentinel 控制台地址
+        port: 8719                  # 本地启动传输 API 端口，若被占用会自动 +1
+        # ⚠️ 关键配置：网关基于 WebFlux，需要关闭 Spring MVC 默认的 Servlet 过滤器
+      scg:
+        fallback:
+          mode: response            # 限流后的响应模式：response 或 redirect
+          response-status: 429      # 触发限流时的 HTTP 响应状态码（Too Many Requests）
+          response-body: '{"code":429,"message":"网络拥挤，请稍后再试！"}' # 自定义被限流时的 JSON 返回
+knife4j:
+  gateway:
+    # ① 第一个配置，开启gateway聚合组件
+    enabled: true
+    # ② 第二行配置，设置聚合模式采用discover服务发现的模式
+    strategy: discover
+    discover:
+      # ③ 第三行配置，开启discover模式
+      enabled: true
+      # ④ 第四行配置，聚合子服务全部为Swagger2规范的文档
+      version: swagger2
+cors:
+  allowed-origins:
+    - http://.....
