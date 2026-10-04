@@ -37,7 +37,7 @@ public class RemoteCodeSandBoxImpl implements CodeSandBox {
 
 
 
-        String url ="http://121.40.143.235:8105/executeCode";
+        String url ="http://localhost:8105/executeCode";
         HttpResponse httpResponse = HttpUtil.createPost(url)
                 .body(JSONUtil.toJsonStr(executeCodeRequest))
                 .header(AUTH_HEADER,accessKey)
