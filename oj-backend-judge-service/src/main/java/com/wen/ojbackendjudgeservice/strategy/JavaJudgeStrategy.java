@@ -46,6 +46,12 @@ public class JavaJudgeStrategy implements JudgeStrategy {
         judgeInfoResponse.setMemory(judgeInfo.getMemory());
         judgeInfoResponse.setStackSize(judgeInfo.getStackSize());
 
+        //4.0 首先判断是否是编译错误
+        if("编译错误".equals(judgeInfo.getMessage())){
+            judgeInfoResponse.setMessage(JudgeInfoMessageEnum.COMPILE_ERROR.getValue());
+            return judgeInfoResponse;
+        }
+
 
 
 
