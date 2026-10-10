@@ -45,7 +45,7 @@ public class JudgeServiceImpl implements JudgeService {
         }
 
         //2. 判断这个题目提交信息的状态 如果不是待判题就不用判题了
-        if(QuestionSubmitStatusEnum.WAITING.getValue()!=questionSubmit.getStatus()){
+        if(QuestionSubmitStatusEnum.WAITING.getValue()!=questionSubmit.getStatus()&&QuestionSubmitStatusEnum.JUDGE_MACHINETIME_OUT.getValue()!=questionSubmit.getStatus()){
             throw new BusinessException(ErrorCode.OPERATION_ERROR,"题目正在判题或已判题结束，请勿重复操作");
         }
 
