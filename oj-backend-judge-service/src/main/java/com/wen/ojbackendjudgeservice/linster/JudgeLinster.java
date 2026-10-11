@@ -32,6 +32,7 @@ public class JudgeLinster {
             judgeService.doJudge(questionSubmitId);
         } catch (Exception e) {
             log.error("判题服务处理失败，questionSubmitId: {}", questionSubmitId, e);
+            throw new RuntimeException("消费异常 重新抛出重新消费");
         }
     }
 
